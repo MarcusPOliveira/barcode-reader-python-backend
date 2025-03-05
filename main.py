@@ -1,9 +1,19 @@
+import os
+from ctypes import cdll
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 import cv2
 from pyzbar.pyzbar import decode
 import numpy as np
 from typing import List
+
+# Força o carregamento do libzbar.so
+try:
+    libzbar_path = "/usr/local/lib/libzbar.so"
+    cdll.LoadLibrary(libzbar_path)
+    print(f"✅ Biblioteca ZBar carregada com sucesso de {libzbar_path}")
+except OSError:
+    print(f"❌ Erro ao carregar a biblioteca ZBar em {libzbar_path}")
 
 app = FastAPI()
 
