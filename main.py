@@ -1,8 +1,3 @@
-import os
-import ctypes
-from barcode import get_barcode_class
-from barcode.writer import ImageWriter
-
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 import cv2
